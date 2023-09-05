@@ -25,11 +25,14 @@ Esistono dei metodi per trasformare una data in millisecondi?
 
 
 
-const targetDate = new Date('2023-09-06T08:30:00'); // Set the target date and time here
+const targetDate = new Date('2023-09-06T09:30:00'); // Set the target date and time here
 const countdownElement = document.querySelector('.countdown'); // Select the element where the countdown will be displayed
 
 const updateCountdown = () => {
     const now = new Date();
+
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); // Adjust for timezone offset
+
     const timeRemaining = targetDate - now;
     
     if (timeRemaining > 0) {
